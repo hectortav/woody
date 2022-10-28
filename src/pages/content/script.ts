@@ -1,10 +1,15 @@
-var logger_addToList = (message: unknown, variant: string) => {
+var logger_addToList = (_message: unknown, variant: string) => {
 	const styles: { [key: string]: string } = {
 		log: "bg-white",
 		info: "bg-blue",
 		warn: "bg-yellow",
 		error: "bg-red",
 	};
+	let message = JSON.stringify(_message);
+	if (message === "{}" || !message) {
+		message = _message.toString();
+	}
+
 	document.getElementById("debugList")?.insertAdjacentHTML(
 		"beforeend",
 		`<li class="${styles[variant]} ${variant}">
@@ -15,7 +20,7 @@ var logger_addToList = (message: unknown, variant: string) => {
                         class="logger_x_button">x</button>
                 </div>
                 <div>
-                    <p>${JSON.stringify(message)}</p>
+                    <p>${message.toString()}</p>
                 </div>
             </li>`
 	);
@@ -57,7 +62,7 @@ console.log = (message: unknown) => {
 };
 
 console.error = (message: unknown) => {
-	console.oerror(message);
+	console.oerror({ message });
 	logger_addToList(message, "error");
 };
 
@@ -146,9 +151,3 @@ if (document.getElementById("logger_clear") !== null) {
 if (localStorage.getItem("logger_is_hidden") === "true") {
 	logger_hideAll("hide");
 }
-
-console.error(1);
-console.log(2);
-console.log(2);
-console.warn({ message: "hello world" });
-console.info(3);

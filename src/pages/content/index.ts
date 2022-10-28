@@ -1,5 +1,4 @@
 var s = document.createElement("script");
-console.log(chrome.runtime.getURL("src/pages/background/index.js"));
 s.src = chrome.runtime.getURL("src/pages/background/index.js");
 (document.head || document.documentElement).appendChild(s);
 
@@ -11,7 +10,7 @@ div.innerHTML = `
     <ul id="debugList" class="logger_list">
     </ul>
     <div style="display:flex;">
-        <button id="logger_hide" class="logger_action" style="margin-right:0.5rem;">x</button>
+        <button id="logger_hide" class="logger_action" style="margin-right:0.5rem;margin-left:auto;">x</button>
         <div class="logger_bubbles">
             <div id="logger_log" class="logger_bubble bg-white">Log</div>
             <div id="logger_info" class="logger_bubble bg-blue">Info</div>

@@ -5,6 +5,12 @@
 	bottom: 0.5rem;
 }
 
+.logger_container > * {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+}
+
 .logger_bubbles {
 	display: flex;
 	flex-direction: row;
@@ -53,6 +59,9 @@
 	padding: 0.5rem;
 	border-radius: 0.5rem;
 	border: 1px solid;
+	max-width: 50vw;
+	max-height: 200px;
+	overflow-y: scroll;
 }
 
 .logger_x_button {
