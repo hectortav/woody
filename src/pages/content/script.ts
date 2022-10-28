@@ -118,7 +118,7 @@ var logger_hideAll = (action?: string) => {
 	if (action !== "hide" && bubbles.style.display === "none") {
 		bubbles.style.display = "flex";
 		list.style.display = "block";
-		localStorage.removeItem("logger_is_hidden");
+		localStorage.setItem("logger_is_hidden", "false");
 		if (document.getElementById("logger_hide")) {
 			document.getElementById("logger_hide")!.innerHTML =
 				"<span>X</span>";
@@ -148,6 +148,6 @@ if (document.getElementById("logger_clear") !== null) {
 	document.getElementById("logger_clear")!.onclick = () => logger_clearAll();
 }
 
-if (localStorage.getItem("logger_is_hidden") === "true") {
+if (localStorage.getItem("logger_is_hidden") !== "false") {
 	logger_hideAll("hide");
 }
