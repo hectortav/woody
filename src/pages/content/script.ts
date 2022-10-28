@@ -1,4 +1,4 @@
-var logger_addToList = (_message: unknown, variant: string) => {
+var logger_addToList = (_message: any, variant: string) => {
 	const styles: { [key: string]: string } = {
 		log: "bg-white",
 		info: "bg-blue",

@@ -61,7 +61,7 @@
 	border: 1px solid;
 	max-width: 50vw;
 	max-height: 200px;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 .logger_x_button {
