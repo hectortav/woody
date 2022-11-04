@@ -16,13 +16,13 @@ const manifest: ManifestType = {
 		{
 			matches: ["http://*/*", "https://*/*", "<all_urls>"],
 			js: ["src/pages/content/index.js"],
-			css: ["contentStyle.css"],
+			css: ["contentStyle.module.css"],
 		},
 	],
 	web_accessible_resources: [
 		{
 			resources: [
-				"contentStyle.css",
+				"contentStyle.module.css",
 				"icon-128.png",
 				"icon-34.png",
 				"src/pages/background/index.js",

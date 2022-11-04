@@ -9,13 +9,19 @@ var logger_addToList = (_message: any, variant: string) => {
 	if (message === "{}" || !message) {
 		message = _message.toString();
 	}
-
+	let display = "block";
+	if (
+		document
+			.getElementById(`logger_${variant}`)
+			?.classList.contains("logger_inactive")
+	) {
+		display = "none";
+	}
 	document.getElementById("debugList")?.insertAdjacentHTML(
 		"beforeend",
-		`<li class="${styles[variant]} ${variant}">
+		`<li class="${styles[variant]} ${variant}" style="display:${display};">
                 <div style="display:flex;width:100%;">
                     <button 
-                        onclick="this.parentNode.parentNode.remove();" 
                         style="margin-left:auto;" 
                         class="logger_x_button">x</button>
                 </div>
@@ -24,6 +30,14 @@ var logger_addToList = (_message: any, variant: string) => {
                 </div>
             </li>`
 	);
+	const button = (
+		document.getElementById("debugList")?.lastChild as HTMLElement
+	).getElementsByTagName("button")[0];
+	if (button !== null) {
+		button!.onclick = () =>
+			(button!.parentNode?.parentNode as HTMLElement)?.remove();
+	}
+	return;
 };
 
 interface Console {
@@ -95,9 +109,9 @@ var logger_hideByClass = (logger_class: string) => {
 		return;
 	}
 	if (changeTo === "none") {
-		button!.classList.add("inactive");
+		button!.classList.add("logger_inactive");
 	} else {
-		button!.classList.remove("inactive");
+		button!.classList.remove("logger_inactive");
 	}
 };
 
